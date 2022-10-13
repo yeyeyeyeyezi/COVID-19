@@ -36,7 +36,7 @@ vehicle_type='C364D5CFCE27A115'
 
 data=pd.read_excel(r'..\{}.xlsx'.format(month))
 data_vehicle=pd.read_excel(r'..\Bus model.xlsx')
-vehicle_list=data_vehicle[data_vehicle['Bus_model']=='{}'.format(vehicle_type)]['Car_ID'].tolist()
+vehicle_list=data_vehicle[data_vehicle['Bus_model']=='{}'.format(vehicle_type)]['Bus_id'].tolist()
 
 # Seat distribution corresponding to the research Bus model
 number_xy=pd.DataFrame(columns=['Seat_number','x','y'])
@@ -70,7 +70,7 @@ def data_deal(data,vehicle_list,number_xy):  ### 针对某月/某车型的数据
     
     # 1/排除已取消订单  
     # 2/找到 中国中车-46车型对应车牌号
-    data_type=data[data['Car_ID'].isin(vehicle_list)].reset_index(drop=True, inplace=False)
+    data_type=data[data['Bus_id'].isin(vehicle_list)].reset_index(drop=True, inplace=False)
     
     
     # 3/对于一条预定记录里包含多名乘客的情况，按乘客数列为不同记录
